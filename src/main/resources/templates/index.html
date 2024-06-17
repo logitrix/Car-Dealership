@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" rel="stylesheet">
+    <script crossorigin="anonymous"
+            integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp"
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script crossorigin="anonymous"
+            integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>CAR DEALER SEARCH</title>
+</head>
+<body>
+<div class="container mt-5">
+    <h2 align="center">Search in Thymeleaf Template</h2>
+    <form method="get" th:action="@{/search}" th:object="${carDto}">
+        <b>Car Model Search Key </b> :
+        <input name="searchKey" placeholder="Find by Car Name" size="50" th:value="${response.request.searchKey}" type="text">
+
+        <br/>
+        <b>Car Length </b>  :
+        MIN <input name="minLength" placeholder="Min" size="6" th:value="${response.request.minLength}" type="number">
+        MAX <input name="maxLength" placeholder="Max" size="6" th:value="${response.request.maxLength}" type="number"
+               th:text="'Minimum ' +  ${response.availableFilters.minLength} + ' to Maximum ' +  ${response.availableFilters.maxLength}">
+
+        <br/>
+        <b>Car Weight </b> :
+        MIN <input name="minWeight" placeholder="Min" size="6" th:value="${response.request.minWeight}" type="number">
+        MAX <input name="maxWeight" placeholder="Max" size="6" th:value="${response.request.maxWeight}" type="number"
+               th:text="'Minimum ' +  ${response.availableFilters.minWeight} + ' to Maximum ' +  ${response.availableFilters.maxWeight}">
+
+        <br/>
+        <b>Car Velocity </b> :
+        MIN <input name="minVelocity" placeholder="Min" size="6" th:value="${response.request.minVelocity}" type="number">
+        MAX <input name="maxVelocity" placeholder="Max" size="6" th:value="${response.request.maxVelocity}" type="number"
+               th:text="'Minimum ' +  ${response.availableFilters.minVelocity} + ' to Maximum ' +  ${response.availableFilters.maxVelocity}">
+
+        <br/>
+        <b>Car Colors Available </b> :
+        <ul>
+            <li th:each="color : ${response.availableFilters.colorsAvailable}">
+                <input name="colors" type="checkbox" th:value="${color}" th:checked="${response.request.colors.contains(color)}"/>
+                <label th:text="${color}"></label>
+            </li>
+        </ul>
+
+        <button class="btn btn-info" type="submit" name="action" value="search">Search</button>
+        <button class="btn btn-info" type="submit" name="action" value="reset">Reset</button>
+        <button class="btn btn-info" type="submit" name="action" value="export">Export</button>
+    </form>
+
+
+
+    <br/>
+
+    <table class="table table-bordered table-sm mt-2">
+        <thead>
+        <tr>
+            <th>Car Name Model</th>
+            <th>Length (mm)</th>
+            <th>Weight (kg)</th>
+            <th>Velocity (km per hr)</th>
+            <th>Color</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="l : ${response.cars}" th:field="${l}">
+            <td th:text="${l.modelName}"></td>
+            <td th:text="${l.length}"></td>
+            <td th:text="${l.weight}"></td>
+            <td th:text="${l.velocity}"></td>
+            <td th:text="${l.color}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
