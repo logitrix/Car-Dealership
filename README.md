@@ -31,12 +31,16 @@ spring-boot-starter-parent 3.3.0
 # Car Velocity  'Define the Minimum and Maximum Velocity to Filter'
 # Car Colors Available   'Select for Colors available to Filter'
 
-![alt text](https://raw.githubusercontent.com/logitrix/Car-Dealership/master/home_page_screen_capture.jpg)
-
 # There were no function to add/edit/delete data as not stated in the requirement
 but intial data can be edit in the file 'DemoData' class. Follow the code in the file.
 
 'repo.save(new Car("BMW iX", BigDecimal.valueOf(4938), BigDecimal.valueOf(3200), BigDecimal.valueOf(160), "RED"));'
+```
+![Home Page](https://raw.githubusercontent.com/logitrix/Car-Dealership/master/home_page_screen_capture.jpg)
+
+
+
+
 
 
 
