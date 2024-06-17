@@ -32,7 +32,7 @@ spring-boot-starter-parent 3.3.0
 # Car Colors Available   'Select for Colors available to Filter'
 
 # There were no function to add/edit/delete data as not stated in the requirement
-but intial data can be edit in the file 'DemoData' class. Follow the code in the file.
+however intial data can be edit in the file 'DemoData' class. Follow the code in the file.
 
 'repo.save(new Car("BMW iX", BigDecimal.valueOf(4938), BigDecimal.valueOf(3200), BigDecimal.valueOf(160), "RED"));'
 ```
